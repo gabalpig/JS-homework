@@ -24,9 +24,38 @@ function pwReg(text){
   return re.test(String(text).toLowerCase());
 }
 
-function toggleEvent(){
+document.querySelector('input.user-password-input').onclick =
+  function loginId() {
+    const idInput = document.querySelector('input.user-email-input');
+    if (!emailReg(idInput.value)){
+      idInput.classList.add('is--invalid');
+    } else if (idInput.value !== user.id) {
+      alert('아이디가 일치하지 않습니다'); 
+    } else {
+      idInput.classList.remove('is--invalid');
+    }
+  };
 
-}
+document.querySelector('button.btn-login').onclick =
+function loginPw() {
+  const pwInput = document.querySelector('input.user-password-input');
+  if (!pwReg(pwInput.value)) {
+    pwInput.classList.add('is--invalid');
+  } else if (pwInput.value !== user.pw) {
+    alert('비밀번호가 일치하지 않습니다.');
+  } else {
+    pwInput.classList.remove('is--invalid');
+    window.location.href = 'welcome.html';
+  }
+};
+
+
+
+
+
+// function toggleEvent(){
+
+// }
 
 // toggle : on/off switch, 스위치를 켰다, 껐다 하는 기능
 // add(), remove() 메서드를 한번에 쓸 수 있도록 합쳐진 개념
@@ -35,13 +64,3 @@ function toggleEvent(){
 // 변수명.addEvent('click', function()){
 //  변수명.classList.toggle('클래스명'); }
 
-
-
-
-
-
-
-
-function getElem(selector){
-  return document.querySelector(selector);
-}
