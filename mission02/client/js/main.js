@@ -9,6 +9,30 @@
 
 */
 
+const navButtons = document.querySelectorAll('.nav li button');
+const visualImage = document.querySelector('.visual img');
+const container = document.querySelector('.container');
+
+navButtons.forEach((button) => {
+  button.addEventListener('click', (event) => {
+    const dataIndex = event.target.closest('li').getAttribute('data-index');
+    const selectedData = data[dataIndex - 1];
+    const { alt, color } = selectedData;
+
+    // Change the visual image and nickname
+    visualImage.src = event.target.closest('img').src;
+    container.querySelector('.nickName').textContent = alt;
+
+    // Change the active button and background color
+    navButtons.forEach((navButton) => navButton.parentElement.classList.remove('is-active'));
+    button.parentElement.classList.add('is-active');
+    container.style.background = `linear-gradient(to right, ${color[0]}, ${color[1]})`;
+  });
+});
+
+
+
+
 
 
 
